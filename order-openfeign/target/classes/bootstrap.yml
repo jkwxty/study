@@ -12,7 +12,17 @@ spring:
 stock-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.it.alibaba.customer.MyCustomerLoadBalancerRule
-
+#springboot 默认 的日志级别时info,feign默认的日志级别为debug,info>debug, feign的debug级别日志就不会输出
 logging:
   level:
     com.it.alibaba.feign: debug
+feign:
+  client:
+    config:
+      ##服务名
+      stock-service:
+        loggerLevel: BASIC
+        #连接超时时间，默认两秒
+        connectTimeOut: 5000
+        #请求处理超时时间，默认五秒
+        readTimeout: 10000

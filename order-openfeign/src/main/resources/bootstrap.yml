@@ -22,3 +22,10 @@ feign:
       ##服务名
       stock-service:
         loggerLevel: BASIC
+        #连接超时时间，默认两秒
+        connectTimeOut: 5000
+        #请求处理超时时间，默认五秒
+        readTimeout: 10000
+        #feign拦截器配置
+        requestInterceptors[0]:
+          com.it.alibaba.customer.MyCustomerFeignInterceptor
