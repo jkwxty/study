@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      server-addr: 139.159.198.7:8849
+      username: nacos
+      password: nacos
+      discovery:
+        namespace: dev
+    loadbalancer:
+      ribbon:
+        enabled: false

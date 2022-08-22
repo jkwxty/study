@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      server-addr: 139.159.198.7:8849
+      username: nacos
+      password: nacos
+      discovery:
+        namespace: public
+      config:
+        #命名空间
+        namespace: dev
+        #更细粒度的分组
+        group: group1
+        #配置文件前缀
+        prefix: order-config
+        #配置文件后缀
+        file-extension: properties
+        #下标越大，优先级越高
+        extension-configs:
+          - data-id: order-config-sit.properties
+            refresh: true
+          - data-id: order-config-sit02.properties
+            refresh: true
+        shared-configs[0]:
+          data-id: order-config-sit.properties
+          group: group1
+          refresh: true
+##优先级 profile>默认配置文件>extension-configs>shared-configs
+stock-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.it.alibaba.customer.MyCustomerLoadBalancerRule
