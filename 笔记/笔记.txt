@@ -1,0 +1,726 @@
+## nacos
+
+###### nacos相关版本依赖
+
+------
+
+父工程：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>nacos</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <modules>
+    <module>order-nacos</module>
+    <module>stock-nacos</module>
+  </modules>
+  <name>nacos</name>
+  <description>Demo project for Spring Boot</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>2.0.10</version>
+      </dependency>
+      <!--spring cloud alibaba版本管理      -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>2.2.5.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--springboot版本管理      -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>2.3.11.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--spring cloud版本管理      -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Hoxton.SR9</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.3.7.RELEASE</version>
+        <configuration>
+          <mainClass>com.example.nacos.NacosApplication</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <id>repackage</id>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+
+```
+
+
+
+子工程
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>nacos</artifactId>
+    <groupId>com.example</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>order-nacos</artifactId>
+
+  <properties>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
+```
+
+[^1]: 注意spring和spring-cloud-alibaba版本之间的关系
+
+[版本对应关系](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E ) 
+
+[nacos注册中心文档地址](https://github.com/alibaba/spring-cloud-alibaba/wiki/Nacos-discovery)
+
+[nacos配置中心文档地址](https://github.com/alibaba/spring-cloud-alibaba/wiki/Nacos-config)
+
+[Linux 服务器上搭建nacos服务端 ](https://blog.csdn.net/qq_46112274/article/details/123117926) ps:自己买的服务器内存不够，nacos集群搭建不了，只能实现单机版nacos~~
+
+
+
+###### nacos的使用
+
+```yml
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      server-addr: 139.159.198.7:8849
+      username: nacos
+      password: nacos
+      discovery:
+        namespace: dev
+      config:
+        #命名空间
+        namespace: dev
+        #更细粒度的分组
+        group: group1
+        #配置文件前缀
+        prefix: order-config
+        #配置文件后缀
+        file-extension: properties
+        #下标越大，优先级越高
+        extension-configs:
+          - data-id: order-config-sit.properties
+            refresh: true
+          - data-id: order-config-sit02.properties
+            refresh: true
+        shared-configs[0]:
+          data-id: order-config-sit.properties
+          group: group1
+          refresh: true
+##优先级 profile>默认配置文件>extension-configs>shared-configs
+
+```
+
+
+
+
+
+学习完注册中心和配置中心的基本使用，但是还不清楚其中原理，有时间需要去搞懂！
+
+nacos注册中心是使用什么方式进行远程调用的？
+
+
+
+学习计划：
+
+​	搭建nexus私服-->nacos 注册中心整合openFign
+
+------
+
+## Maven管理工具 NEXUS 搭建  
+
+[nexus下载地址](https://help.sonatype.com/docs)
+
+pom：
+
+```
+<distributionManagement>
+  <repository>
+    <id>releases</id>
+    <name>Nexus Release</name>
+    <url>http://139.159.198.7:8081/nexus/content/repositories/releases/</url>
+  </repository>
+
+  <snapshotRepository>
+    <id>snapshots</id>
+    <name>Nexus SNAPSHOTS</name>
+    <url>http://139.159.198.7:8081/nexus/content/repositories/snapshots/</url>
+  </snapshotRepository>
+</distributionManagement>
+```
+
+maven setting文件：
+
+```xml
+</server>
+
+    <!-- Another sample, using keys to authenticate.-->
+    <server>
+        <id>release</id>
+        <privateKey>admin</privateKey>
+        <passphrase>admin123</passphrase>
+    </server>
+	<server>
+      <id>snapshots</id>
+      <privateKey>admin</privateKey>
+      <passphrase>admin123</passphrase>
+    </server>
+</servers>
+
+<mirror>
+    <!-- id：可自定义 -->
+    <id>nexus-mine</id>
+    <!-- mirrorOf：配置成 * 表示通过 nexus 访问网路上所有的远程仓库；配置成central，表示访问 nexus 的central仓库； -->
+    <mirrorOf>central</mirrorOf>
+    <!-- name：可自定义 -->
+    <name>Nexus mine</name>
+    <!-- url：仓库地址 -->
+    <url>http://139.159.198.7:8081/nexus/content/groups/public/</url>
+</mirror>
+```
+
+
+
+## [springalibaba教程](https://www.bilibili.com/video/BV1pF41147Aa?p=2&vd_source=66b43a603a98f45e95e059fb7bdd3c36) 相关笔记
+
+### 微服务概念：
+
+#### 	服务架构演变流程
+
+​	单体架构->垂直架构->分布式架构->SOA架构->微服务架构
+
+
+
+​	单体架构：
+
+​		优点：架构简单，开发成本低。项目部署在一个节点上，便于维护 (基于小型项目)
+
+​		缺点：对于大型项目来说，不易于开发和维护，项目模块耦合大，单点容错率底(一旦服务出BUG 导致所有模块都不能用)，无法针对不同模块进行水平扩展
+
+
+
+​	垂直架构：
+
+​		优点：
+
+1. 系统拆分实现流量分组，解决并发问题，可以争对不同模块进行优化和水平扩展
+2. 一个系统产生的问题不会影像另一个系统，相互独立的，提搞容错率
+
+​		缺点：
+
+1. 无法进行互相调用，会有重复的开发任务
+
+   
+
+   OA,MES,WMS,供应链系统 一般采用的是这种垂直拆分			
+
+​	分布式架构：
+
+​		优点：
+
+1. 抽取公共的功能作为服务层，提高代码复用性
+
+​		缺点：
+
+1. 系统间的耦合度变高，调用关系错综复杂，难以维护
+
+
+
+​	SOA架构：
+
+​		优点：
+
+1. 使用治理中心(ESB/dubbo) 解决了服务间调用关系的自动调节
+
+​		缺点：
+
+1. 服务间会有依赖关系，一旦某个环节节点出错，影像会比较大(服务雪崩)
+2. 服务关系负责，运维，测试，部署困难
+
+​	微服务架构：
+
+​		优点：
+
+1. 服务原子化拆分，独立打包 部署和升级，保证每个微服务清晰的划分任务，利于扩展
+2. 微服务之前采用Restful等轻量级http协议相互调用
+
+​		缺点：
+
+1. 分布式系统开发的技术成本高(容错，分布式事务等)
+2. 复杂性更高。各个微服务进行分布式独立部署，当进行模块调用时，分布式会变得更麻烦
+
+
+
+### Ribbon
+
+Spring cloud Ribbon 是基于NetflixRibbon实现的一套基于客户端负载均衡工具
+
+#### 分类
+
+客户端负载均衡：客户端会有一个服务列表，在发送请求之前，会在客户端通过负载均衡算法选择一个服务器，然后进行访问，	这就是客户端负载均衡。即在客户端就进行负载均衡算法分配，一般有Ribbon
+
+服务端负载均衡：先发送请求，然后通过负载均衡算法，在多个服务器之前选择一个进行访问；即在服务端再进行负载均衡算法	分配。例如：nginx
+
+
+
+#### 常见的负载均衡策略
+
+​	随机，轮询，加权轮询，地址hash,最小链接数
+
+#### ribbon的使用
+
+1 配置类+注解
+
+​	配置类：
+
+```java
+@Configuration
+public class RibbonConfig {
+
+  @Bean
+  public IRule iRule(){
+    return new RoundRobinRule();
+  }
+
+}
+
+
+//启动类
+@SpringBootApplication
+@RibbonClients(value =
+    {
+        @RibbonClient(name = "stock-service",configuration = RibbonConfig.class)
+    }
+)
+public class OrderServer {
+
+  @Bean
+  @LoadBalanced
+  public RestTemplate restTemplate(){
+    return new RestTemplate();
+  }
+
+  public static void main(String[] args) {
+    ConfigurableApplicationContext run = SpringApplication.run(OrderServer.class, args);
+  }
+}
+
+
+
+```
+
+2 配置文件指定Irul接口的实现类
+
+​	
+
+```yml
+##争对某个被调用服务配置负载均衡策略，这里是订单服务调用stock-service服务时，配置的负载均衡策略为自定义的负载均衡策略-MyCustomerLoadBalancerRule
+stock-service: ##服务名称
+  ribbon:
+  	 ##可以是已有的Irule实现类(eg:NacosRule,RandomRule)，也可以是自定义的Irule实现类
+    NFLoadBalancerRuleClassName: com.it.alibaba.customer.MyCustomerLoadBalancerRule
+```
+
+```java
+public class MyCustomerLoadBalancerRule extends AbstractLoadBalancerRule {
+
+  @Override
+  public void initWithNiwsConfig(IClientConfig iClientConfig) {
+
+  }
+
+  @Override
+  public Server choose(Object o) {
+    ILoadBalancer loadBalancer = this.getLoadBalancer();
+    List<Server> allServers = loadBalancer.getAllServers();
+    Map<Integer, MetaInfo> serverMap = allServers.stream()
+        .collect(Collectors.toMap(Server::getPort, Server::getMetaInfo));
+    if(serverMap!=null&&serverMap.size()>0){
+      serverMap.forEach((key,value)->{
+        System.out.println("端口："+key+"==="+"服务名:"+value.getAppName());
+      });
+    }
+    int i = ThreadLocalRandom.current().nextInt(allServers.size());
+    return allServers.get(i);
+  }
+}
+```
+
+#### 使用时需要注意的问题
+
+​		 1 如果使用的是配置类方式配置负载均衡策略，那么，我们的配置类不能放在@CompomentScan能扫描到的包下面，否则这个在配置了多个服务的情况下，这个配置类会全局共享，其他配置不生效
+
+
+
+###### 
+
+### Openfeign
+
+##### 什么是feign
+
+Feign是Netflix开发的 声明式 模板化的http客户端，可以帮助我们更加快捷，优雅的调用http api。-- feign内部也整合了负载均衡器
+
+由于netflix feign闭源了，spring cloud对feign进行了增强，推出了OpenFeign,使其支持Spring mvc注解，另外还整合了Nacos和Ribbon。
+
+##### 优势
+
+feign可以做到使用http请求远程服务时，就像掉了本地方法一样的体验，不需要经过常规的http client构造请求再解析返回数据，无需关注与远程的交互细节，更无需关注分布式环境开发
+
+
+
+##### Spring Cloud Alibaba整合openFeign
+
+引入依赖
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+  </dependency>
+</dependencies>
+```
+
+示例代码
+
+```java
+/**
+ *
+ * @author JiangKangWei
+ * @create 2022/8/19 16:18
+ */
+@FeignClient(name = "stock-service",path = "/stock")
+public interface StockFeignService {
+
+  @RequestMapping("add")
+  public String add();
+
+}
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableFeignClients
+public class OrderServer {
+
+  @Bean
+  public RestTemplate restTemplate(){
+    return new RestTemplate();
+  }
+
+  public static void main(String[] args) {
+    ConfigurableApplicationContext run = SpringApplication.run(OrderServer.class, args);
+
+  }
+}
+```
+
+##### open feign的日志级别
+
+1. NONE：不记录任何日志(默认)
+2. BASIC：仅记录请求方法
+3. HEADERS：记录请求和响应的heard
+4. FULL：记录请求和响应的header,body和元数据
+
+
+
+##### 		spring cloud feign的自定义配置及使用
+
+###### 日志配置
+
+全局日志配置：
+
+```yml
+#springboot 默认 的日志级别时info,feign默认的日志级别为debug,info>debug, feign的debug级别日志就不会输出
+logging:
+  level:
+    com.it.alibaba.feign: debug
+```
+
+```java
+@Configuration
+public class FeignConfig {
+  
+  @Bean
+  public Logger.Level feignLoggerLevel(){
+    return Logger.Level.FULL;
+  }
+}
+```
+
+局部日志配置
+
+```java
+@FeignClient(name = "stock-service",path = "/stock",configuration = FeignConfig.class)
+public interface StockFeignService {
+
+  @RequestMapping("add")
+  public String add();
+}
+
+
+
+
+
+/**
+ * 全局配置：使用 @Configuration 会将配置作用于所有的服务提供方
+ * 局部配置：如果只想针对某一个服务提供方做配置，就不要加 @Configuration注解，同时讲这个类放在
+ *        @FeignClient注解中的 configuration属性中
+ */
+public class FeignConfig {
+
+  @Bean
+  public Logger.Level feignLoggerLevel(){
+    return Logger.Level.FULL;
+  }
+}
+
+
+
+```
+
+
+
+也可以使用配置文件配置日志级别，并区分服务提供方
+
+```yml
+feign:
+  client:
+    config:
+      ##服务名，可分别配置多个
+      stock-service:
+        loggerLevel: BASIC
+```
+
+###### 超时时间配置
+
+配置文件：
+
+```yml
+feign:
+  client:
+    config:
+      ##服务名
+      stock-service:
+        #连接超时时间，默认两秒
+        connectTimeOut: 5000
+        #请求处理超时时间，默认五秒
+        readTimeout: 10000
+```
+
+配置类：
+
+```java
+/**
+ *
+ * @author JiangKangWei
+ * @create 2022/8/19 17:29
+ */
+
+
+@Configuration
+public class FeignConfig {
+
+  /**
+   * 设置日志优先级，还需要再配置文件中修改spring boot 默认的日志有限级别为
+   * @return
+   */
+  @Bean
+  public Logger.Level feignLoggerLevel(){
+    return Logger.Level.FULL;
+  }
+
+  @Bean
+  public Request.Options options(){
+    //1 连接超时时间，2 请求处理超时时间
+    return new Request.Options(5000,10000);
+  }
+}
+```
+
+
+
+##### OpenFeign 自定义拦截器
+
+###### 自定义拦截器主体：
+
+```java
+package com.it.alibaba.customer;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
+import org.springframework.context.annotation.Configuration;
+/**
+ *自定义feign 拦截器， 调用feign接口之前，会先通过这里，做一些统一配置
+ * 可以在本类直接申明配置类注入，为了方便管理，这里注释掉配置类注解，放在Feignconfig中做统一管理
+ * @author JiangKangWei
+ * @create 2022/8/22 14:59
+ */
+//@Configuration
+public class MyCustomerFeignInterceptor implements RequestInterceptor {
+
+  @Override
+  public void apply(RequestTemplate requestTemplate) {
+    requestTemplate.header("UserCode","91785");
+    requestTemplate.header("TenantId","10001");
+  }
+}
+```
+
+###### 	配置方式
+
+配置文件：
+
+```yml
+feign:
+  client:
+    config:
+      ##服务名
+      stock-service:
+        #feign拦截器配置
+        requestInterceptors[0]:
+          com.it.alibaba.customer.MyCustomerFeignInterceptor
+```
+
+配置类：
+
+```
+@Configuration
+public class FeignConfig {
+
+  /**
+   * 设置日志优先级，还需要再配置文件中修改spring boot 默认的日志有限级别为
+   * @return
+   */
+  @Bean
+  public Logger.Level feignLoggerLevel(){
+    return Logger.Level.FULL;
+  }
+
+  @Bean
+  public Request.Options options(){
+    //1 连接超时时间，2 请求处理超时时间
+    return new Request.Options(5000,10000);
+  }
+
+  @Bean
+  public MyCustomerFeignInterceptor requestInterceptor(){
+    //自定义的feign拦截器
+    return new MyCustomerFeignInterceptor();
+  }
+}
+```
+
+
+
+### Sentinel
+
+#### --
+
+#### --
+
+#### --
+
+#### --
+
+#### --
+
+#### --
+
+#### --
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
