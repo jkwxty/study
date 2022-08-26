@@ -13,6 +13,7 @@
     <module>stock</module>
     <module>order-loadbalancer</module>
     <module>order-openfeign</module>
+      <module>sentinel</module>
   </modules>
   <name>study</name>
   <description>Demo project for Spring Boot</description>

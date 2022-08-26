@@ -1,0 +1,17 @@
+package com.it.alibaba;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ *
+ * @author JiangKangWei
+ * @create 2022/8/25 17:25
+ */
+@SpringBootApplication
+public class SentinelApplicationServer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SentinelApplicationServer.class,args);
+    }
+}
