@@ -1,0 +1,7 @@
+server:
+  port: 8020
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080

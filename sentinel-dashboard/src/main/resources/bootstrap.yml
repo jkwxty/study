@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: sentinel
+  cloud:
+    nacos:
+      server-addr: 139.159.198.7:8849
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
