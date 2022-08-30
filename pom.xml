@@ -13,7 +13,7 @@
     <module>stock</module>
     <module>order-loadbalancer</module>
     <module>order-openfeign</module>
-      <module>sentinel</module>
+    <module>sentinel</module>
     <module>sentinel-dashboard</module>
   </modules>
   <name>study</name>

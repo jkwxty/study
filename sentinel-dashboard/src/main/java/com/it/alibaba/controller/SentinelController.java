@@ -10,10 +10,12 @@ import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import com.alibaba.nacos.common.utils.ThreadUtils;
+import com.it.alibaba.service.OrderServiceImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +26,19 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/sentinel")
 public class SentinelController {
+
+    @Resource
+    private OrderServiceImpl orderService;
+
+    @RequestMapping("getOrder1")
+    public String getOrder1(){
+        return orderService.getOrder();
+    }
+
+    @RequestMapping("getOrder2")
+    public String getOrder2(){
+        return orderService.getOrder();
+    }
 
 
     @RequestMapping("hello2")
