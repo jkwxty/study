@@ -1253,8 +1253,6 @@ http://localhost:8719/getParamRules
 
 ###### [MySQL事务隔离级别详解](https://blog.csdn.net/m0_45406092/article/details/109608471)
 
-2/article/details/121263208
-
 #### ![image-20220831143647040](笔记.assets/image-20220831143647040.png)
 
 ## 
