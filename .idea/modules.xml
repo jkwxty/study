@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/account-seata-8092/account-seata-8092.iml" filepath="$PROJECT_DIR$/account-seata-8092/account-seata-8092.iml" />
       <module fileurl="file://$PROJECT_DIR$/nacos.iml" filepath="$PROJECT_DIR$/nacos.iml" />
       <module fileurl="file://$PROJECT_DIR$/order-loadbalancer/order-loadbalancer.iml" filepath="$PROJECT_DIR$/order-loadbalancer/order-loadbalancer.iml" />
       <module fileurl="file://$PROJECT_DIR$/order-nacos/order-nacos.iml" filepath="$PROJECT_DIR$/order-nacos/order-nacos.iml" />
       <module fileurl="file://$PROJECT_DIR$/order-openfeign/order-openfeign.iml" filepath="$PROJECT_DIR$/order-openfeign/order-openfeign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-seata-8090/order-openfeign (1).iml" filepath="$PROJECT_DIR$/order-seata-8090/order-openfeign (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/order-ribbon/order-ribbon.iml" filepath="$PROJECT_DIR$/order-ribbon/order-ribbon.iml" />
       <module fileurl="file://$PROJECT_DIR$/sentinel-dashboard/sentinel-dashboard.iml" filepath="$PROJECT_DIR$/sentinel-dashboard/sentinel-dashboard.iml" />
       <module fileurl="file://$PROJECT_DIR$/stock/stock.iml" filepath="$PROJECT_DIR$/stock/stock.iml" />
       <module fileurl="file://$PROJECT_DIR$/stock-nacos/stock-nacos.iml" filepath="$PROJECT_DIR$/stock-nacos/stock-nacos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stock-seata-8091/stock-seata-8091.iml" filepath="$PROJECT_DIR$/stock-seata-8091/stock-seata-8091.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,47 @@
+#### 环境下载地址：
+
+jdk下载地址：
+https://www.oracle.com/java/technologies/downloads/
+
+maven下载地址：
+	官网地址：
+	https://maven.apache.org/download.cgi
+
+	各个版本地址：
+	https://archive.apache.org/dist/maven/maven-3/
+
+mysql下载地址(社区版):
+https://downloads.mysql.com/archives/community/
+
+
+
+
+
+#### Linux常用命令：
+
+	mysql相关：
+		启动 MySQL 服务：systemctl start mysqld
+		重启 MySQL 服务：systemctl restart mysqld
+		关闭 MySQL 服务：systemctl stop mysqld
+		连接mysql : mysql -u root -p
+		登出mysql:quit/exit
+		查看mysql日志： tail -f /var/log/mysqld.log 
+	
+		调整mysql密码设置复杂度：
+			# 将密码复杂度校验调整简单类型
+			set global validate_password.policy = 0;
+			# 设置密码最少位数限制为 4 位
+			set global validate_password.length = 4;
+	
+		修改mysql密码：ALTER USER 'root'@'localhost' IDENTIFIED BY 'jkwxty1314';
+	
+		创建mysql用户：
+			格式：CREATE USER <用户名> [ IDENTIFIED ] BY [ PASSWORD ] <口令>
+			eg:
+				# mysql 8.0 以下
+				create user 'jkw'@'%' IDENTIFIED BY 'jkwxty1314';
+				# mysql 8.0
+				create user 'jkw'@'%' IDENTIFIED WITH mysql_native_password BY 'jkwxty1314';
+		分配用户权限：
+			所有权限：grant all on *.* to 'jkw'@'%';
+			详细分配参考：https://blog.csdn.net/qq_42874635/article/details/118420488

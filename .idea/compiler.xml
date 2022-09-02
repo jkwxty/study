@@ -2,28 +2,36 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="stock-seata-8091" />
+        <module name="order-openfeign (1)" />
         <module name="order-loadbalancer" />
         <module name="order-nacos" />
         <module name="stock-nacos" />
         <module name="order-openfeign" />
         <module name="sentinel-dashboard" />
         <module name="stock" />
+        <module name="account-seata-8092" />
         <module name="order-ribbon" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="account-seata-8092" target="1.8" />
       <module name="nacos" target="1.8" />
       <module name="order-loadbalancer" target="1.8" />
       <module name="order-nacos" target="1.8" />
       <module name="order-openfeign" target="1.8" />
+      <module name="order-openfeign (1)" target="1.8" />
       <module name="order-ribbon" target="1.8" />
+      <module name="order-seata-8090" target="1.8" />
       <module name="sentinel-dashboard" target="1.8" />
       <module name="stock" target="1.8" />
       <module name="stock-nacos" target="1.8" />
+      <module name="stock-seata-8091" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

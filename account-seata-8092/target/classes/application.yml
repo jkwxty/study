@@ -1,0 +1,11 @@
+server:
+  port: 8092
+seata:
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 139.159.198.7:8849
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      namespace: dev
