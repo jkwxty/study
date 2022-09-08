@@ -2,6 +2,8 @@ package com.it.alibaba.controller;
 
 import com.alibaba.cloud.nacos.ribbon.NacosRule;
 import javax.annotation.Resource;
+
+import com.it.alibaba.my.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -28,13 +30,13 @@ public class OrderController {
 //  @RefreshScope("${user.age}")
 //  private String age;
 
+  @Resource
+  private MyService myService;
+
 
   @GetMapping()
   public String add(){
-    ThreadLocal threadLocal = new ThreadLocal();
-    threadLocal.set("1");
-//    String result = restTemplate.getForObject("http://localhost:8012/stock/add", String.class);
-//    System.out.println(result);
+    myService.print();
     return name;
   }
 

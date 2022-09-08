@@ -17,6 +17,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class AccountServer {
 
   public static void main(String[] args) {
+    Class<?>[] types = new Class[]{SpringApplication.class, String[].class};
     SpringApplication.run(AccountServer.class,args);
   }
 }

@@ -23,13 +23,14 @@ public class OrderServer {
   }
 
   public static void main(String[] args) {
+    Class<?>[] types = new Class[]{SpringApplication.class, String[].class};
     ConfigurableApplicationContext run = SpringApplication.run(OrderServer.class, args);
-    while(true){
-      System.out.println(run.getEnvironment().getProperty("user.name")+"=="
-          +run.getEnvironment().getProperty("user.age")+"=="
-          +run.getEnvironment().getProperty("user.sex")+"=="
-          +run.getEnvironment().getProperty("user.config"));
-      ThreadUtils.sleep(2000L);
-    }
+//    while(true){
+//      System.out.println(run.getEnvironment().getProperty("user.name")+"=="
+//          +run.getEnvironment().getProperty("user.age")+"=="
+//          +run.getEnvironment().getProperty("user.sex")+"=="
+//          +run.getEnvironment().getProperty("user.config"));
+//      ThreadUtils.sleep(2000L);
+//    }
   }
 }

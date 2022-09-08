@@ -18,6 +18,7 @@
     <module>order-seata-8090</module>
     <module>stock-seata-8091</module>
     <module>account-seata-8092</module>
+    <module>my-spring-boot-start</module>
   </modules>
   <name>study</name>
   <description>Demo project for Spring Boot</description>
