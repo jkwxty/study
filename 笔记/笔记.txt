@@ -1255,9 +1255,23 @@ http://localhost:8719/getParamRules
 
 #### ![image-20220831143647040](笔记.assets/image-20220831143647040.png)
 
-## 
+ 因为数据库是有多个客户端连接，每个客户端可能都会有事务执行，在多个事务并发执行的时候，隔离性就要保证这些事务之间执行不会相互影响。
 
+## MYSQL
 
+学习进度：p14  https://www.bilibili.com/video/BV1ev41137G5?p=14&vd_source=66b43a603a98f45e95e059fb7bdd3c36
+
+![image-20220917170637583](assets/image-20220917170637583.png)
+
+![image-20220917171005321](assets/image-20220917171005321.png)
+
+![image-20220917171112467](assets/image-20220917171112467.png)
+
+![image-20220917171307388](assets/image-20220917171307388.png)
+
+![image-20220917171749946](assets/image-20220917171749946.png)
+
+![image-20220918133335123](C:\Users\Win10\AppData\Roaming\Typora\typora-user-images\image-20220918133335123.png)
 
 
 

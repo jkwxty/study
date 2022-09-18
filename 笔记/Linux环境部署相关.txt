@@ -46,4 +46,8 @@ mysql相关：
 	分配用户权限：
 		所有权限：grant all on *.* to 'jkw'@'%';
 		详细分配参考：https://blog.csdn.net/qq_42874635/article/details/118420488
+
+	查看mysql相关的目录:
+	find / -name mysql;
+	MySQL数据库文件的存放路径：/var/lib/mysql
 ```
