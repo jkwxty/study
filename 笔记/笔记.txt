@@ -1259,7 +1259,7 @@ http://localhost:8719/getParamRules
 
 ## MYSQL
 
-学习进度：p14  https://www.bilibili.com/video/BV1ev41137G5?p=14&vd_source=66b43a603a98f45e95e059fb7bdd3c36
+学习进度：p17  https://www.bilibili.com/video/BV1ev41137G5?p=14&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
 ![image-20220917170637583](assets/image-20220917170637583.png)
 
