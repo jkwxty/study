@@ -3,3 +3,5 @@ server:
 spring:
   profiles:
     active: pro
+my:
+  userName: xty121212
