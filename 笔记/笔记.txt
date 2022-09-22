@@ -1470,7 +1470,7 @@ mysql走二级索引查询的时候，命中一条二级索引就会回表查询
 
 ##### MYSQL后续深入学习 相关链接 
 
-##### https://www.bilibili.com/video/BV1o3411M7hK/?spm_id_from=333.999.0.0&vd_source=66b43a603a98f45e95e059fb7bdd3c36
+https://www.bilibili.com/video/BV1o3411M7hK/?spm_id_from=333.999.0.0&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
 ## spring & springboot
 
