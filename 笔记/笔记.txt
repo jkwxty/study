@@ -1470,9 +1470,11 @@ mysql走二级索引查询的时候，命中一条二级索引就会回表查询
 
 ##### MYSQL后续深入学习 相关链接 
 
-https://www.bilibili.com/video/BV1o3411M7hK/?spm_id_from=333.999.0.0&vd_source=66b43a603a98f45e95e059fb7bdd3c36
+###### https://www.bilibili.com/video/BV1o3411M7hK/?spm_id_from=333.999.0.0&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
 ## spring & springboot
+
+idea 下载源码： mvn dependency:resolve -Dclassifier=sources
 
 https://www.bilibili.com/video/BV1RE411N7xk/?spm_id_from=333.999.0.0&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
@@ -1482,7 +1484,11 @@ spring 容器加载过程源码解析
 
 https://www.bilibili.com/video/BV1pL4y1p7Fa/?spm_id_from=333.337.search-card.all.click&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
+spring 源码环境搭建
 
+https://www.bilibili.com/video/BV1Ri4y1s7Wc/?spm_id_from=333.337.search-card.all.click
+
+https://github.com/spring-projects/spring-framework
 
 
 

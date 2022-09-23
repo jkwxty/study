@@ -3,6 +3,7 @@ package com.it.alibaba;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class StockServer {
 
   public static void main(String[] args) {
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
     SpringApplication.run(StockServer.class,args);
   }
 }

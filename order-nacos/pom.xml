@@ -17,11 +17,11 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.example</groupId>
-      <artifactId>my-spring-boot-start</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.example</groupId>-->
+<!--      <artifactId>my-spring-boot-start</artifactId>-->
+<!--      <version>0.0.1-SNAPSHOT</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -34,12 +34,12 @@
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.example</groupId>
-      <artifactId>my-spring-boot-start</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <scope>compile</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.example</groupId>-->
+<!--      <artifactId>my-spring-boot-start</artifactId>-->
+<!--      <version>0.0.1-SNAPSHOT</version>-->
+<!--      <scope>compile</scope>-->
+<!--    </dependency>-->
   </dependencies>
 
   <distributionManagement>
