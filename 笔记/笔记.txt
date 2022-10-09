@@ -1486,18 +1486,24 @@ https://www.bilibili.com/video/BV1pL4y1p7Fa/?spm_id_from=333.337.search-card.all
 
 spring 源码环境搭建
 
+git config --global http.sslVerify “false”
+
+git config --global --edit
+
+E:\study\selfStudy\git\spring-framework
+
 https://www.bilibili.com/video/BV1Ri4y1s7Wc/?spm_id_from=333.337.search-card.all.click
 
 https://github.com/spring-projects/spring-framework
 
 
 
+## JUC
 
+java8新特性：B站 宋红康
 
+JUC基础：https://www.bilibili.com/video/BV1Kw411Z7dF/?spm_id_from=333.337.search-card.all.click&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
+P7
 
-
-
-
-
-f
+深入：https://www.bilibili.com/video/BV1ar4y1x727/?p=3&spm_id_from=pageDriver&vd_source=66b43a603a98f45e95e059fb7bdd3c36
