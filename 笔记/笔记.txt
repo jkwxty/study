@@ -1504,6 +1504,6 @@ java8新特性：B站 宋红康
 
 JUC基础：https://www.bilibili.com/video/BV1Kw411Z7dF/?spm_id_from=333.337.search-card.all.click&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
-P7
+P17
 
 深入：https://www.bilibili.com/video/BV1ar4y1x727/?p=3&spm_id_from=pageDriver&vd_source=66b43a603a98f45e95e059fb7bdd3c36
