@@ -1507,3 +1507,13 @@ JUC基础：https://www.bilibili.com/video/BV1Kw411Z7dF/?spm_id_from=333.337.sea
 P17
 
 深入：https://www.bilibili.com/video/BV1ar4y1x727/?p=3&spm_id_from=pageDriver&vd_source=66b43a603a98f45e95e059fb7bdd3c36
+
+###### 如何查看死锁
+
+jps -l  + jstock
+
+###### 读写锁的理解
+
+读写锁：https://www.cnblogs.com/javashare/articles/16064896.html
+
+读写锁降级，写锁降级为读锁：https://blog.csdn.net/weixin_40388441/article/details/113616501
