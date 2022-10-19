@@ -1517,3 +1517,15 @@ jps -l  + jstock
 读写锁：https://www.cnblogs.com/javashare/articles/16064896.html
 
 读写锁降级，写锁降级为读锁：https://blog.csdn.net/weixin_40388441/article/details/113616501
+
+###### AQS
+
+https://www.bilibili.com/video/BV19J411Q7R5/?spm_id_from=333.337.search-card.all.click&vd_source=66b43a603a98f45e95e059fb7bdd3c36
+
+
+
+
+
+## DOCER-K8S
+
+https://www.bilibili.com/video/BV1ad4y1m76X/?spm_id_from=333.337.search-card.all.click&vd_source=66b43a603a98f45e95e059fb7bdd3c36
