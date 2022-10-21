@@ -1518,11 +1518,25 @@ jps -l  + jstock
 
 读写锁降级，写锁降级为读锁：https://blog.csdn.net/weixin_40388441/article/details/113616501
 
-###### AQS
+##### AQS
 
 https://www.bilibili.com/video/BV19J411Q7R5/?spm_id_from=333.337.search-card.all.click&vd_source=66b43a603a98f45e95e059fb7bdd3c36
 
-P4 8
+###### CAS
+
+比较并交换，是一种乐观锁机制，轻量级锁
+
+AtomicInteger 如何解决原子操作问题？
+
+通过汇编语言，对硬件指令加锁实现操作的原子性 (缓存行锁/总线锁)
+
+![image-20221020171250407](笔记.assets/image-20221020171250407.png)
+
+P6 3.44
+
+可打印对象内部组成结构的依赖包
+
+org.openjdk.jol   jol-core
 
 
 
