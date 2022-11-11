@@ -4,16 +4,16 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 class ThreadDemo implements Callable{
 
     @Override
     public Object call() throws Exception {
+        AtomicInteger a=new AtomicInteger();
+        a.incrementAndGet();
         return null;
     }
 }
@@ -21,6 +21,18 @@ class ThreadDemo implements Callable{
 public class Demo1 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ThreadPoolExecutor mypool = new ThreadPoolExecutor(50, 70, 20, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10000));
+        CountDownLatch countDownLatch = new CountDownLatch(1000);
+        for (int i = 0; i < 1000; i++) {
+
+                CompletableFuture.runAsync(()->{
+                    System.out.println(countDownLatch.getCount());
+
+
+                },mypool);
+            countDownLatch.countDown();
+            }
+        countDownLatch.await();
 //        CountDownLatch countDownLatch = new CountDownLatch(3);
 //        FutureTask<Integer> futureTask = new FutureTask<>(()->{
 //            int j=8;
