@@ -361,7 +361,7 @@ Spring cloud Ribbon 是基于NetflixRibbon实现的一套基于客户端负载�
 ```java
 @Configuration
 public class RibbonConfig {
-
+ 
   @Bean
   public IRule iRule(){
     return new RoundRobinRule();
